@@ -1,5 +1,5 @@
 def read_source_dic(path)
-  source = File.read(path).encode('utf-8', 'cp932').each_line.map(&:chomp)
+  source = File.read(path).encode('utf-8', 'utf-16').each_line.map(&:chomp)
   source.reject! { |_| _.empty? || _.start_with?(?!) }
 
   items = source.map do |line|
