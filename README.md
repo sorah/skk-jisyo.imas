@@ -9,7 +9,7 @@ Plus, entries for given name and family name of people and characters around the
 
 ```
 ./source.sh
-ruby generate.sh > skk-jisyo.imas
+ruby generate.rb > skk-jisyo.imas
 ```
 
 ## Thanks
