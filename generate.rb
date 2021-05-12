@@ -1,7 +1,7 @@
 require 'pp'
 require_relative './util'
 
-source_path = ARGV[0] || "#{__dir__}/dic.txt"
+source_path = ARGV[0] || "#{__dir__}/dic.utf16le"
 names_path = ARGV[0] || "#{__dir__}/names.txt"
 
 items = read_source_dic(source_path)

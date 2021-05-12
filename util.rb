@@ -1,5 +1,5 @@
 def read_source_dic(path)
-  source = File.read(path).encode('utf-8', 'cp932').each_line.map(&:chomp)
+  source = File.open(path,"rb:BOM|UTF-16LE:UTF-8") { |file| file.each_line.map(&:chomp) }
   source.reject! { |_| _.empty? || _.start_with?(?!) }
 
   items = source.map do |line|
@@ -7,10 +7,7 @@ def read_source_dic(path)
     reading.tr!('ａ-ｚＡ-Ｚ０-９','a-za-z0-9')
     reading.tr!('＠！：','@!:')
     reading.sub!('ヴ','う゛')
-    reading.sub!('&hearts;','♡')
     reading.downcase!
-    annotation.sub!('&hearts;','♡')
-    word.sub!('&hearts;','♡')
     annotation = nil if !annotation || annotation.empty?
     item = {reading: reading, word: word, kind: kind, annotation: annotation}
     item
